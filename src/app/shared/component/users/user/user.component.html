@@ -1,0 +1,25 @@
+<ng-container>
+  <p>
+    The username is,<strong>{{userinfo.username}}</strong> with id <strong>{{userinfo.userid}}</strong>
+  </p>
+  <!-- {{userinfo | json}} -->
+  <hr>
+
+
+
+  <button
+  routerLink="edit" mat-raised-button color="primary"
+  >Edit User</button>
+
+  <button
+  (click)="Onremoveuser()"
+  mat-raised-button color="warn"
+  class="ml-3">Remove User</button>
+</ng-container>
+
+<!-- <hr>
+<button
+routerLink="/users/3"
+class="btn btn-primary">Load shubhi info</button> -->
+
+

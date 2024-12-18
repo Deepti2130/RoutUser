@@ -1,0 +1,27 @@
+<!-- <li class="list-group-item"
+    routerLink="/users/{{user.userid}}"
+    *ngFor="let user of usersInfo">
+     {{user.userName}}
+    </li> -->
+<div class="row">
+  <div class="col text-right">
+    <button
+    routerLink="addusers"
+    class="btn btn-outline-primary">Add users</button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+   <ul class="list-group">
+    <li class="list-group-item"
+    [routerLink]="[user.userid]"
+    *ngFor="let user of usersInfo">
+     {{user.username}}
+    </li>
+   </ul>
+  </div>
+  <div class="col-md-4">
+
+  </div>
+</div>
