@@ -32,22 +32,25 @@ const appRouts:Routes = [
 
   {
     path:'users',
-    component:UsersComponent
-   },
-   {
-    path:'users/addusers',
-    component:UserformComponent
+    component:UsersComponent,
+    children:[
+      {
+        path:'addusers',
+        component:UserformComponent
+       },
+
+       {
+        path:':userid',
+        component:UserComponent
+       },
+
+       {
+        path:':userid/edit',
+        component:UserformComponent
+       },
+    ]
    },
 
-   {
-    path:'users/:userid',
-    component:UserComponent
-   },
-
-   {
-    path:'users/:userid/edit',
-    component:UserformComponent
-   },
 
    {
     path:'products',

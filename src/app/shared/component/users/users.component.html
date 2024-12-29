@@ -15,13 +15,22 @@
   <div class="col-md-4">
    <ul class="list-group">
     <li class="list-group-item"
+    [ngClass]="{
+      active:selectedId === user.userid
+    }"
+    (click)="onuserselect(user)"
     [routerLink]="[user.userid]"
+    [queryParams]="{userrole:user.userrole}"
     *ngFor="let user of usersInfo">
      {{user.username}}
     </li>
    </ul>
   </div>
   <div class="col-md-4">
-
+  <router-outlet></router-outlet>
   </div>
 </div>
+
+
+
+<!-- routerLinkActive="active"  used in li for active the li-->

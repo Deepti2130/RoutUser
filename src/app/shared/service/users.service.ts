@@ -56,7 +56,10 @@ export class UsersService {
   let getIndex = this.userArr.findIndex(user => user.userid === updateduser.userid)
 
   this.userArr[getIndex] = updateduser
-  this._router.navigate(['/users'])
+  this._router.navigate(['/users',updateduser.userid],{
+    // queryParamsHandling:"preserve" it is not working in updated
+    queryParams:{userrole:updateduser.userrole}
+  })
   this._snackBar.opensnackBar(`The user ${updateduser.username} updated successfully!!!`)
   }
 

@@ -23,6 +23,7 @@
   </button>
 
   <button
+  [disabled]="updatebtnflag"
   (click)="onupdateuser()"
   *ngIf="IsinEditmode"
   type="button" mat-raised-button color="primary">

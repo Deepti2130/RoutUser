@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Params, RouterLink } from '@angular/router';
+import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { Iuser } from 'src/app/shared/models/users';
 import { UsersService } from 'src/app/shared/service/users.service';
 import { UuidService } from 'src/app/shared/service/uuid.service';
@@ -16,6 +16,8 @@ export class UserComponent implements OnInit {
   constructor(
     private _routes: ActivatedRoute,
     private _userservice: UsersService,
+    private _router:Router,
+
 
 
   ) { }
@@ -32,6 +34,8 @@ export class UserComponent implements OnInit {
     })
 
 
+
+
     // console.log(this._routes)
     // console.log(this._routes.snapshot.params['userid'])//it is javascript object
 
@@ -44,6 +48,15 @@ export class UserComponent implements OnInit {
 
   Onremoveuser(){
     this._userservice.removeuser(this.userid)
+  }
+
+
+  gotoEdituser(){
+    this._router.navigate(['edit'],{
+      relativeTo:this._routes,
+      queryParamsHandling :'preserve'
+    })
+
   }
 
 }

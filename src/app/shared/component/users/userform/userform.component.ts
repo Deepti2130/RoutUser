@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Iuser } from 'src/app/shared/models/users';
 import { UsersService } from 'src/app/shared/service/users.service';
 import { UuidService } from 'src/app/shared/service/uuid.service';
@@ -19,6 +19,9 @@ export class UserformComponent implements OnInit {
 
   //for update and edit functionality
   IsinEditmode : boolean = false
+
+  //for userrole flag by using query params
+  updatebtnflag:boolean = false
   constructor(
     private _routes: ActivatedRoute,
     private _userservice: UsersService,
@@ -40,6 +43,19 @@ export class UserformComponent implements OnInit {
       //  console.log(this.userinfo)
        this.userForm.patchValue(this.userinfo)
     }
+
+    this._routes.queryParams
+      .subscribe((params:Params)=>{
+          console.log(params);
+
+      if(params['userrole'].toLowerCase().includes('candidate')){
+        this.userForm.disable();
+        this.updatebtnflag = true
+      }else{
+        this.userForm.enable()
+        // this.updatebtnflag = false
+      }
+      })
 
 
 
